@@ -1,6 +1,7 @@
 package com.pana;
 
 import com.pana.advancedenchantments.GiveCommand;
+import com.pana.advancedenchantments.ItemProtectionListener;
 import com.pana.advancedenchantments.TemplateApplyListener;
 import com.pana.advancedenchantments.recipes.RecipeRegistry;
 import com.pana.bugs.cmi.enableCMIFix;
@@ -53,6 +54,12 @@ public class TrrusFixes extends JavaPlugin {
         } else {
             getLogger().severe("No se pudo registrar el comando '/trrus'. ¿Está declarado en el plugin.yml?");
         }
+
+        // Registrar el listener de protección de ítems
+        getServer().getPluginManager().registerEvents(
+                new ItemProtectionListener(recipeRegistry.getItemRegistry()),
+                this
+        );
     }
 
     @Override
