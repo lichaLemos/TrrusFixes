@@ -1,0 +1,35 @@
+plugins {
+    id 'java'
+}
+
+group = 'com.pana'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+    maven { url = 'https://repo.papermc.io/repository/maven-public/' }
+    maven { url = 'https://jitpack.io' }
+}
+
+dependencies {
+    // API de Paper
+    compileOnly 'io.papermc.paper:paper-api:1.21.4-R0.1-SNAPSHOT'
+
+    // API de Vault
+    compileOnly('com.github.MilkBowl:VaultAPI:1.7') {
+        exclude group: 'org.bukkit', module: 'bukkit'
+    }
+
+    // Lee automáticamente los JARs que pongas dentro de la carpeta "libs"
+    compileOnly fileTree(dir: 'libs', include: ['*.jar'])
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+}

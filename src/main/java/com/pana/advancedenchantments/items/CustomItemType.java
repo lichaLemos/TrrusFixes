@@ -1,0 +1,57 @@
+package com.pana.advancedenchantments.items;
+
+import org.bukkit.Material;
+
+public enum CustomItemType {
+    // --- MATERIALES INTERMEDIOS ---
+    // Común
+    FIERY_IRON("fiery_iron", Material.IRON_INGOT, "Hierro Ardiente", "#FFAA00"),
+    // Raro
+    GOLD_FIERY_COMPACT("gold_fiery_compact", Material.GOLD_INGOT, "Compacto Ardiente de Oro", "#F7D349"),
+    GOLD_AIRY_COMPACT("gold_airy_compact", Material.GOLD_INGOT, "Compacto Aireado de Oro", "#F7D349"),
+    // Épico
+    GEODE_CARROT_COMPACT("geode_carrot_compact", Material.AMETHYST_SHARD, "Compacto Zanahor de Amatista", "#795AB3"),
+    GEODE_FIERY_COMPACT("geode_fiery_compact", Material.AMETHYST_SHARD, "Compacto Ardiente de Amatista", "#795AB3"),
+    GEODE_AIRY_COMPACT("geode_airy_compact", Material.AMETHYST_SHARD, "Compacto Aireado de Amatista", "#795AB3"),
+    // Mítico
+    REDLUZI_COMPACT("redluzi_compact", Material.PURPLE_GLAZED_TERRACOTTA, "Redluzi Compacto", "#591D8B"),
+    REDLUZI_FIERY_COMPACT("redluzi_fiery_compact", Material.POPPED_CHORUS_FRUIT, "Compacto Ardiente de Redluzi", "#795AB3"),
+    REDLUZI_AIRY_COMPACT("redluzi_airy_compact", Material.POPPED_CHORUS_FRUIT, "Compacto Aireado de Redluzi", "#795AB3"),
+    REDLUZI_CARROT_COMPACT("redluzi_carrot_compact", Material.POPPED_CHORUS_FRUIT, "Compacto Zanahor de Redluzi", "#795AB3"),
+    REDLUZI_AQUA_COMPACT("redluzi_aqua_compact", Material.POPPED_CHORUS_FRUIT, "Compacto Aquoso de Redluzi", "#795AB3"),
+    // Legendario
+    EMERALD_AIRY_COMPACT("emerald_airy_compact", Material.EMERALD, "Compacto Aireado de Esmeralda", "#55FF55"),
+    EMERALD_CARROT_COMPACT("emerald_carrot_compact", Material.EMERALD, "Compacto Zanahor de Esmeralda", "#55FF55"),
+    EMERALD_AQUA_COMPACT("emerald_aqua_compact", Material.EMERALD, "Compacto Aquoso de Esmeralda", "#55FF55"),
+    EMERALD_DEATH_COMPACT("emerald_death_compact", Material.EMERALD, "Compacto Mortifero de Esmeralda", "#55FF55"),
+    // Absoluto
+    DIAMOND_CARROT_COMPACT("diamond_carrot_compact", Material.DIAMOND, "Compacto Zanahor de Diamante", "#3CDDE2"),
+    DIAMOND_AQUA_COMPACT("diamond_aqua_compact", Material.DIAMOND, "Compacto Aquoso de Diamante", "#3CDDE2"),
+    DIAMOND_DEATH_COMPACT("diamond_death_compact", Material.DIAMOND, "Compacto Mortifero de Diamante", "#3CDDE2"),
+    DIAMOND_HORN_COMPACT("diamond_horn_compact", Material.DIAMOND, "Cuerno Endiamantado", "#3CDDE2"),
+
+    // --- PLANTILLAS (TIERS) ---
+    TEMPLATE_COMMON("template_common", Material.VEX_ARMOR_TRIM_SMITHING_TEMPLATE, "Común", "#A9A9A9"),
+    TEMPLATE_RARE("template_rare", Material.TIDE_ARMOR_TRIM_SMITHING_TEMPLATE, "Raro", "#55FF55"),
+    TEMPLATE_EPIC("template_epic", Material.SPIRE_ARMOR_TRIM_SMITHING_TEMPLATE, "Épico", "#AA00AA"),
+    TEMPLATE_MYTHIC("template_mythic", Material.RIB_ARMOR_TRIM_SMITHING_TEMPLATE, "Mítico", "#FF5555"),
+    TEMPLATE_LEGENDARY("template_legendary", Material.EYE_ARMOR_TRIM_SMITHING_TEMPLATE, "Legendario", "#FFAA00"),
+    TEMPLATE_ABSOLUTE("template_absolute", Material.FLOW_ARMOR_TRIM_SMITHING_TEMPLATE, "Absoluto", "#00FFFF");
+
+    private final String id;
+    private final Material material;
+    private final String displayName;
+    private final String colorHex;
+
+    CustomItemType(String id, Material material, String displayName, String colorHex) {
+        this.id = id;
+        this.material = material;
+        this.displayName = displayName;
+        this.colorHex = colorHex;
+    }
+
+    public String getId() { return id; }
+    public Material getMaterial() { return material; }
+    public String getDisplayName() { return displayName; }
+    public String getColorHex() { return colorHex; }
+}
