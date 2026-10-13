@@ -9,7 +9,6 @@ import com.pana.advancedenchantments.recipes.RecipeRegistry;
 import com.pana.bugs.cmi.enableCMIFix;
 import com.pana.citizens.enableNPCSHOP;
 import com.pana.crate.CrateListener;
-import com.pana.debug.nitroCasino.enableFix;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class TrrusFixes extends JavaPlugin {
@@ -23,11 +22,6 @@ public class TrrusFixes extends JavaPlugin {
 
         enableCMIFix cmiFix = new enableCMIFix(this);
         cmiFix.enableFix();
-
-        enableFix casinoFix = new enableFix(this);
-        if (casinoFix.enableNitroCasinoFix()) {
-            getLogger().info("NitroCasinoFix fix applied.");
-        }
 
         enableNPCSHOP NPCSHOP = new enableNPCSHOP(this);
         if (NPCSHOP.enableFix()) {

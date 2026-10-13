@@ -140,7 +140,8 @@ public class CustomItemRegistry {
         ));
     }
 
-    // --- MÉTODO GENERAL PARA PLANTILLAS ---
+    // --- Template General Method ---
+
 
     public ItemStack createTemplate(CustomItemType templateType) {
         // Usa el Material definido en el Enum (ej.: VEX para Común, TIDE para Rara)
@@ -152,8 +153,6 @@ public class CustomItemRegistry {
             String name = templateType.getDisplayName().toUpperCase();
 
             meta.displayName(mm.deserialize("<!italic><" + color + ">ᴍᴇᴊᴏʀᴀ ᴅᴇ ʟɪʙʀᴏ - " + name + "</" + color + ">"));
-
-            //Template, hide Applies to: & Ingredients:
 
             List<Component> lore = new ArrayList<>();
             lore.add(mm.deserialize(" "));
