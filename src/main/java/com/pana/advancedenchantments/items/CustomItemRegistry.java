@@ -153,6 +153,8 @@ public class CustomItemRegistry {
 
             meta.displayName(mm.deserialize("<!italic><" + color + ">ᴍᴇᴊᴏʀᴀ ᴅᴇ ʟɪʙʀᴏ - " + name + "</" + color + ">"));
 
+            //Template, hide Applies to: & Ingredients:
+
             List<Component> lore = new ArrayList<>();
             lore.add(mm.deserialize(" "));
             lore.add(mm.deserialize("<!italic><gray>Calidad:</gray> <" + color + ">" + name + "</" + color + ">"));
@@ -176,6 +178,9 @@ public class CustomItemRegistry {
             for (String line : loreLines) {
                 lore.add(mm.deserialize(line));
             }
+
+            //Template, hide Applies to: & Ingredients:
+
             meta.lore(lore);
             meta.getPersistentDataContainer().set(itemKey, PersistentDataType.STRING, type.getId());
             item.setItemMeta(meta);

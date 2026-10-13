@@ -5,6 +5,9 @@ api-version: '1.20'
 softdepend: [NitroCasino, Vault, Citizens, ShopGUIPlus, CMI]
 depend: [ExcellentCrates, nightcore]
 commands:
+  e:
+    description: Comando de AdvancedEnchantments e interfaz de mejoras de TrrusFixes
+    permission: trrus.use
   trrus:
     description: Comando principal del plugin
-    permission: op
+    permission: trrus.admin
