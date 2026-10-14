@@ -26,6 +26,42 @@ public class CustomItemRegistry {
 
     // --- MÉTODOS PARA DIVERSOS ÍTEMS ---
 
+    public ItemStack createBlazeEssence() {
+        return buildItem(CustomItemType.BLAZE_ESSENCE, List.of(
+                "<!italic><gray>La esencia del alma de Blaze.</gray>"
+        ));
+    }
+
+    public ItemStack createBreezeEssence() {
+        return buildItem(CustomItemType.BREEZE_ESSENCE, List.of(
+                "<!italic><gray>La esencia del alma de Breeze.</gray>"
+        ));
+    }
+
+    public ItemStack createPiglinEssence() {
+        return buildItem(CustomItemType.PIGLIN_ESSENCE, List.of(
+                "<!italic><gray>La esencia del alma de Piglin Brute.</gray>"
+        ));
+    }
+
+    public ItemStack createGuardianEssence() {
+        return buildItem(CustomItemType.GUARDIAN_ESSENCE, List.of(
+                "<!italic><gray>La esencia del alma de Guardian.</gray>"
+        ));
+    }
+
+    public ItemStack createWitherEssence() {
+        return buildItem(CustomItemType.WITHER_ESSENCE, List.of(
+                "<!italic><gray>La esencia del alma de Wither.</gray>"
+        ));
+    }
+
+    public ItemStack createWardenEssence() {
+        return buildItem(CustomItemType.WARDEN_ESSENCE, List.of(
+                "<!italic><gray>La esencia del alma de Warden.</gray>"
+        ));
+    }
+
     public ItemStack createFieryIron() {
         return buildItem(CustomItemType.FIERY_IRON, List.of(
                 "<!italic><gray>Un lingote de hierro imbuido con polvo de Blaze.</gray>"

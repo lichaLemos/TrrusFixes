@@ -23,6 +23,12 @@ public class GiveCommand implements CommandExecutor, TabCompleter {
     private final CustomItemRegistry itemRegistry;
 
     private static final List<String> ITEM_OPTIONS = List.of(
+            "essence_blaze",
+            "essence_breeze",
+            "essence_piglin",
+            "essence_guardian",
+            "essence_wither",
+            "essence_warden",
             // Común
             "fiery_iron",
             // Raro
@@ -79,6 +85,12 @@ public class GiveCommand implements CommandExecutor, TabCompleter {
         }
 
         ItemStack itemToGive = switch (targetItemName) {
+            case "essence_blaze" -> itemRegistry.createBlazeEssence();
+            case "essence_breeze" -> itemRegistry.createBreezeEssence();
+            case "essence_piglin" -> itemRegistry.createPiglinEssence();
+            case "essence_guardian" -> itemRegistry.createGuardianEssence();
+            case "essence_wither" -> itemRegistry.createWitherEssence();
+            case "essence_warden" -> itemRegistry.createWardenEssence();
             case "fiery_iron" -> itemRegistry.createFieryIron();
             case "gold_fiery", "compacto_ardiente_oro" -> itemRegistry.createGoldFieryCompact();
             case "gold_airy", "compacto_aireado_oro" -> itemRegistry.createGoldAiryCompact();

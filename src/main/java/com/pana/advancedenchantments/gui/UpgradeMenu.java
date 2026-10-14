@@ -128,9 +128,9 @@ public class UpgradeMenu implements InventoryHolder {
         inventory.setItem(13, itemRegistry.createRedluziCompact());
 
         inventory.setItem(14, itemRegistry.createRedluziFieryCompact());
-        inventory.setItem(23, itemRegistry.createRedluziFieryCompact());
-        inventory.setItem(32, itemRegistry.createRedluziFieryCompact());
-        inventory.setItem(41, itemRegistry.createRedluziFieryCompact());
+        inventory.setItem(23, itemRegistry.createRedluziAiryCompact());
+        inventory.setItem(32, itemRegistry.createRedluziCarrotCompact());
+        inventory.setItem(41, itemRegistry.createRedluziAquaCompact());
 
         inventory.setItem(15, itemRegistry.createEmeraldAiryCompact());
         inventory.setItem(24, itemRegistry.createEmeraldCarrotCompact());

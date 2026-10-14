@@ -3,6 +3,13 @@ package com.pana.advancedenchantments.items;
 import org.bukkit.Material;
 
 public enum CustomItemType {
+    // --- MATERIALES PRIMA ---
+    BLAZE_ESSENCE("blaze_essence", Material.BLAZE_POWDER, "Esencia de Blaze", "#FFAA00"),
+    BREEZE_ESSENCE("breeze_essence", Material.WIND_CHARGE, "Esencia de Breeze", "#6B75A9"),
+    PIGLIN_ESSENCE("piglin_essence", Material.GOLDEN_CARROT, "Esencia de Piglin Brute", "#E9C944"),
+    GUARDIAN_ESSENCE("guardian_essence", Material.PRISMARINE_SHARD, "Esencia de Guardian", "#A2CFC0"),
+    WITHER_ESSENCE("wither_essence", Material.WITHER_ROSE, "Esencia de Wither", "#171210"),
+    WARDEN_ESSENCE("warden_essence", Material.ECHO_SHARD, "Esencia de Warden", "#009093"),
     // --- MATERIALES INTERMEDIOS ---
     // Común
     FIERY_IRON("fiery_iron", Material.IRON_INGOT, "Hierro Ardiente", "#FFAA00"),

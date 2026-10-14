@@ -6,9 +6,11 @@ import com.pana.advancedenchantments.ItemProtectionListener;
 import com.pana.advancedenchantments.TemplateApplyListener;
 import com.pana.advancedenchantments.gui.MenuListener;
 import com.pana.advancedenchantments.recipes.RecipeRegistry;
+import com.pana.auramobs.DeathMob;
 import com.pana.bugs.cmi.enableCMIFix;
 import com.pana.citizens.enableNPCSHOP;
 import com.pana.crate.CrateListener;
+import com.pana.mechanics.destroyBlockMob;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class TrrusFixes extends JavaPlugin {
@@ -46,6 +48,18 @@ public class TrrusFixes extends JavaPlugin {
         // REGISTRO DEL LISTENER DEL MENÚ GUI
         getServer().getPluginManager().registerEvents(
                 new MenuListener(recipeRegistry.getItemRegistry(), this),
+                this
+        );
+
+        // REGISTRO DEL LISTENER DE CUSTOM DROP MOBS
+        getServer().getPluginManager().registerEvents(
+                new DeathMob(recipeRegistry.getItemRegistry()),
+                this
+        );
+
+        // REGISTRO DEL DESTROY BLOCK MOB
+        getServer().getPluginManager().registerEvents(
+                new destroyBlockMob(this),
                 this
         );
 

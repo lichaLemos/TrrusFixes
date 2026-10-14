@@ -50,7 +50,7 @@ public class IngredientRecipes {
         ShapedRecipe recipe = new ShapedRecipe(key, itemRegistry.createFieryIron());
         recipe.shape("III", "IBI", "III");
         recipe.setIngredient('I', Material.IRON_INGOT);
-        recipe.setIngredient('B', Material.BLAZE_POWDER);
+        recipe.setIngredient('B', itemRegistry.createBlazeEssence());
         Bukkit.addRecipe(recipe);
     }
 
@@ -61,7 +61,7 @@ public class IngredientRecipes {
         recipe.shape("GBG", "GPG", "GGG");
         recipe.setIngredient('B', Material.GOLD_BLOCK);
         recipe.setIngredient('G', Material.GOLD_INGOT);
-        recipe.setIngredient('P', Material.BLAZE_POWDER);
+        recipe.setIngredient('P', itemRegistry.createBlazeEssence());
         Bukkit.addRecipe(recipe);
     }
 
@@ -71,7 +71,7 @@ public class IngredientRecipes {
         recipe.shape("GBG", "GWG", "GGG");
         recipe.setIngredient('B', Material.GOLD_BLOCK);
         recipe.setIngredient('G', Material.GOLD_INGOT);
-        recipe.setIngredient('W', Material.WIND_CHARGE);
+        recipe.setIngredient('W', itemRegistry.createBreezeEssence());
         Bukkit.addRecipe(recipe);
     }
 
@@ -81,7 +81,7 @@ public class IngredientRecipes {
         ShapedRecipe recipe = new ShapedRecipe(key, itemRegistry.createGeodeCarrotCompact());
         recipe.shape("AAA", "AGA", "AAA");
         recipe.setIngredient('A', Material.AMETHYST_BLOCK);
-        recipe.setIngredient('G', Material.GOLDEN_CARROT);
+        recipe.setIngredient('G', itemRegistry.createPiglinEssence());
         Bukkit.addRecipe(recipe);
     }
 
@@ -90,7 +90,7 @@ public class IngredientRecipes {
         ShapedRecipe recipe = new ShapedRecipe(key, itemRegistry.createGeodeFieryCompact());
         recipe.shape("AAA", "APA", "AAA");
         recipe.setIngredient('A', Material.AMETHYST_BLOCK);
-        recipe.setIngredient('P', Material.BLAZE_POWDER);
+        recipe.setIngredient('P', itemRegistry.createBlazeEssence());
         Bukkit.addRecipe(recipe);
     }
 
@@ -99,7 +99,7 @@ public class IngredientRecipes {
         ShapedRecipe recipe = new ShapedRecipe(key, itemRegistry.createGeodeAiryCompact());
         recipe.shape("AAA", "AWA", "AAA");
         recipe.setIngredient('A', Material.AMETHYST_BLOCK);
-        recipe.setIngredient('W', Material.WIND_CHARGE);
+        recipe.setIngredient('W', itemRegistry.createBreezeEssence());
         Bukkit.addRecipe(recipe);
     }
 
@@ -119,7 +119,7 @@ public class IngredientRecipes {
         ShapedRecipe recipe = new ShapedRecipe(key, itemRegistry.createRedluziFieryCompact());
         recipe.shape(" R ", "RPR", " R ");
         recipe.setIngredient('R', itemRegistry.createRedluziCompact());
-        recipe.setIngredient('P', Material.BLAZE_POWDER);
+        recipe.setIngredient('P', itemRegistry.createBlazeEssence());
 
         Bukkit.addRecipe(recipe);
     }
@@ -129,7 +129,7 @@ public class IngredientRecipes {
         ShapedRecipe recipe = new ShapedRecipe(key, itemRegistry.createRedluziAiryCompact());
         recipe.shape(" R ", "RWR", " R ");
         recipe.setIngredient('R', itemRegistry.createRedluziCompact());
-        recipe.setIngredient('W', Material.WIND_CHARGE);
+        recipe.setIngredient('W', itemRegistry.createBreezeEssence());
         Bukkit.addRecipe(recipe);
     }
 
@@ -138,7 +138,7 @@ public class IngredientRecipes {
         ShapedRecipe recipe = new ShapedRecipe(key, itemRegistry.createRedluziCarrotCompact());
         recipe.shape(" R ", "RCR", " R ");
         recipe.setIngredient('R', itemRegistry.createRedluziCompact());
-        recipe.setIngredient('C', Material.GOLDEN_CARROT);
+        recipe.setIngredient('C', itemRegistry.createPiglinEssence());
         Bukkit.addRecipe(recipe);
     }
 
@@ -147,7 +147,7 @@ public class IngredientRecipes {
         ShapedRecipe recipe = new ShapedRecipe(key, itemRegistry.createRedluziAquaCompact());
         recipe.shape(" R ", "RPR", " R ");
         recipe.setIngredient('R', itemRegistry.createRedluziCompact());
-        recipe.setIngredient('P', Material.PRISMARINE_SHARD);
+        recipe.setIngredient('P', itemRegistry.createGuardianEssence());
         Bukkit.addRecipe(recipe);
     }
 
@@ -156,7 +156,7 @@ public class IngredientRecipes {
         ShapedRecipe recipe = new ShapedRecipe(key, itemRegistry.createEmeraldAiryCompact());
         recipe.shape("BBB", "BWB", "BBB");
         recipe.setIngredient('B', Material.EMERALD_BLOCK);
-        recipe.setIngredient('W', Material.WIND_CHARGE);
+        recipe.setIngredient('W', itemRegistry.createBreezeEssence());
         Bukkit.addRecipe(recipe);
     }
 
@@ -165,7 +165,7 @@ public class IngredientRecipes {
         ShapedRecipe recipe = new ShapedRecipe(key, itemRegistry.createEmeraldCarrotCompact());
         recipe.shape("BBB", "BCB", "BBB");
         recipe.setIngredient('B', Material.EMERALD_BLOCK);
-        recipe.setIngredient('C', Material.GOLDEN_CARROT);
+        recipe.setIngredient('C', itemRegistry.createPiglinEssence());
         Bukkit.addRecipe(recipe);
     }
 
@@ -174,7 +174,7 @@ public class IngredientRecipes {
         ShapedRecipe recipe = new ShapedRecipe(key, itemRegistry.createEmeraldAquaCompact());
         recipe.shape("BBB", "BPB", "BBB");
         recipe.setIngredient('B', Material.EMERALD_BLOCK);
-        recipe.setIngredient('P', Material.PRISMARINE_SHARD);
+        recipe.setIngredient('P', itemRegistry.createGuardianEssence());
         Bukkit.addRecipe(recipe);
     }
 
@@ -183,7 +183,7 @@ public class IngredientRecipes {
         ShapedRecipe recipe = new ShapedRecipe(key, itemRegistry.createEmeraldDeathCompact());
         recipe.shape("BBB", "BWB", "BBB");
         recipe.setIngredient('B', Material.EMERALD_BLOCK);
-        recipe.setIngredient('W', Material.WITHER_ROSE);
+        recipe.setIngredient('W', itemRegistry.createWitherEssence());
 
         Bukkit.addRecipe(recipe);
     }
@@ -193,7 +193,7 @@ public class IngredientRecipes {
         ShapedRecipe recipe = new ShapedRecipe(key, itemRegistry.createDiamondCarrotCompact());
         recipe.shape("BBB", "BCB", "BBB");
         recipe.setIngredient('B', Material.DIAMOND_BLOCK);
-        recipe.setIngredient('C', Material.GOLDEN_CARROT);
+        recipe.setIngredient('C', itemRegistry.createPiglinEssence());
         Bukkit.addRecipe(recipe);
     }
 
@@ -202,7 +202,7 @@ public class IngredientRecipes {
         ShapedRecipe recipe = new ShapedRecipe(key, itemRegistry.createDiamondAquaCompact());
         recipe.shape("BBB", "BPB", "BBB");
         recipe.setIngredient('B', Material.DIAMOND_BLOCK);
-        recipe.setIngredient('P', Material.PRISMARINE_SHARD);
+        recipe.setIngredient('P', itemRegistry.createGuardianEssence());
         Bukkit.addRecipe(recipe);
     }
 
@@ -211,7 +211,7 @@ public class IngredientRecipes {
         ShapedRecipe recipe = new ShapedRecipe(key, itemRegistry.createDiamondDeathCompact());
         recipe.shape("BBB", "BWB", "BBB");
         recipe.setIngredient('B', Material.DIAMOND_BLOCK);
-        recipe.setIngredient('W', Material.WITHER_ROSE);
+        recipe.setIngredient('W', itemRegistry.createWitherEssence());
 
         Bukkit.addRecipe(recipe);
     }
@@ -221,7 +221,7 @@ public class IngredientRecipes {
         ShapedRecipe recipe = new ShapedRecipe(key, itemRegistry.createDiamondHornCompact());
         recipe.shape("BBB", "BEB", "BBB");
         recipe.setIngredient('B', Material.DIAMOND_BLOCK);
-        recipe.setIngredient('E', Material.ECHO_SHARD);
+        recipe.setIngredient('E', itemRegistry.createWardenEssence());
         Bukkit.addRecipe(recipe);
     }
 }

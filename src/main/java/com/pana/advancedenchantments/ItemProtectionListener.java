@@ -43,12 +43,16 @@ public class ItemProtectionListener implements Listener {
     // 2. Evitar crafteos en mesas de crafteo vainilla (crear bloques o herramientas con tus ítems)
     @EventHandler
     public void onPrepareCraft(PrepareItemCraftEvent event) {
-        for (ItemStack item : event.getInventory().getMatrix()) {
-            if (isCustomItem(item)) {
-                event.getInventory().setResult(null);
-                break;
+        for (ItemStack itemRecipe : event.getInventory().getMatrix()) {
+            if (isCustomItem(itemRecipe)) {
+                ItemStack itemResult = event.getInventory().getResult();
+                if (!isCustomItem(itemResult)) {
+                    event.getInventory().setResult(null);
+                    break;
+                }
             }
         }
+
     }
 
     // 3. Interceptar la activación física del bloque Crafter por Redstone
@@ -91,8 +95,7 @@ public class ItemProtectionListener implements Listener {
                 invType == InventoryType.SMITHING ||
                 invType == InventoryType.ANVIL ||
                 invType == InventoryType.CARTOGRAPHY ||
-                invType == InventoryType.STONECUTTER ||
-                invType == InventoryType.WORKBENCH;
+                invType == InventoryType.STONECUTTER;
 
         if (!isRestrictedInterface) return;
 
