@@ -4,8 +4,8 @@ import org.bukkit.Material;
 import org.bukkit.entity.EntityType;
 
 public enum MobToBlock {
-    SOUL_SOIL(Material.SOUL_SOIL, EntityType.WITHER_SKELETON, 2.5),
-    SOUL_SAND(Material.SOUL_SAND, EntityType.BLAZE, 6);
+    SOUL_SOIL(Material.SOUL_SOIL, EntityType.WITHER_SKELETON, 8),
+    SOUL_SAND(Material.SOUL_SAND, EntityType.BLAZE, 4);
 
     private final Material material;
     private final EntityType mob;

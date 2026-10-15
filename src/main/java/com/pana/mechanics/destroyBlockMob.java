@@ -2,11 +2,14 @@ package com.pana.mechanics;
 
 import dev.aurelium.auraskills.api.event.skill.EntityXpGainEvent;
 import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer;
-import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
+import org.bukkit.attribute.Attribute;
+import org.bukkit.attribute.AttributeInstance;
 import org.bukkit.entity.Entity;
+import org.bukkit.entity.LivingEntity;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
@@ -16,15 +19,21 @@ import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.util.Objects;
 import java.util.concurrent.ThreadLocalRandom;
+
+import static java.lang.Math.sqrt;
+import static org.bukkit.Statistic.MINE_BLOCK;
 
 public class destroyBlockMob implements Listener {
 
 
     private final JavaPlugin plugin;
+    private final Plugin AuraMobsPlugin;
 
-    public destroyBlockMob(JavaPlugin plugin) {
+    public destroyBlockMob(JavaPlugin plugin, Plugin auraPlugin) {
         this.plugin = plugin;
+        this.AuraMobsPlugin = auraPlugin;
     }
 
     @EventHandler
@@ -42,15 +51,32 @@ public class destroyBlockMob implements Listener {
         if (ThreadLocalRandom.current().nextDouble(100.0) < mobToBlock.getChance()) {
             Class<? extends Entity> entityClass = mobToBlock.getMob().getEntityClass();
             if (entityClass != null) {
+
                 location.getWorld().spawn(location, entityClass, entity -> {
                     // 1. Guardamos tu tag propio para que no tire XP ni drops al morir
                     NamespacedKey key = new NamespacedKey(plugin, "destroy_block_mob");
                     entity.getPersistentDataContainer().set(key, PersistentDataType.STRING, "mob");
 
                     // 2. Engañamos a AuraMobs poniéndole su propia Summon Key para que lo ignore
-                    Plugin auraMobsPlugin = Bukkit.getPluginManager().getPlugin("AuraMobs");
-                    if (auraMobsPlugin instanceof dev.aurelium.auramobs.AuraMobs auraMobs) {
+                    if (AuraMobsPlugin instanceof dev.aurelium.auramobs.AuraMobs auraMobs) {
                         entity.getPersistentDataContainer().set(auraMobs.getSummonKey(), PersistentDataType.BYTE, (byte) 1);
+                    }
+
+
+                    Player player = event.getPlayer();
+                    int picked = player.getStatistic(MINE_BLOCK, block);
+                    int level = picked / 100;
+                    if (entity instanceof LivingEntity livingEntity) {
+                        // 2. Realizas el casting de forma segura
+                        double baseDamage = Objects.requireNonNull(livingEntity.getAttribute(Attribute.ATTACK_DAMAGE)).getBaseValue();
+                        double baseHealth = Objects.requireNonNull(livingEntity.getAttribute(Attribute.MAX_HEALTH)).getBaseValue();
+                        double baseSpeed = Objects.requireNonNull(livingEntity.getAttribute(Attribute.MOVEMENT_SPEED)).getBaseValue();
+                        double damage = baseDamage + (baseDamage * (level - 1) / 25);
+                        double health = baseHealth * (1 + ((double) (level - 1) / 25));
+                        double speed = baseSpeed + (sqrt(level) * 0.01);
+                        this.setAttributeBaseValue(livingEntity, Attribute.ATTACK_DAMAGE, damage);
+                        this.setAttributeBaseValue(livingEntity, Attribute.MAX_HEALTH, health);
+                        this.setAttributeBaseValue(livingEntity, Attribute.MOVEMENT_SPEED, speed);
                     }
 
                     // 3. Le aplicamos el nombre que nosotros queremos sin que nadie lo pise
@@ -60,6 +86,13 @@ public class destroyBlockMob implements Listener {
 
                 });
             }
+        }
+    }
+
+    private void setAttributeBaseValue(LivingEntity entity, Attribute attribute, double value) {
+        AttributeInstance instance = entity.getAttribute(attribute);
+        if (instance != null) {
+            instance.setBaseValue(value);
         }
     }
 

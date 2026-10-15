@@ -11,6 +11,8 @@ import com.pana.bugs.cmi.enableCMIFix;
 import com.pana.citizens.enableNPCSHOP;
 import com.pana.crate.CrateListener;
 import com.pana.mechanics.destroyBlockMob;
+import org.bukkit.Bukkit;
+import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class TrrusFixes extends JavaPlugin {
@@ -58,8 +60,9 @@ public class TrrusFixes extends JavaPlugin {
         );
 
         // REGISTRO DEL DESTROY BLOCK MOB
+        Plugin auraMobsPlugin = Bukkit.getPluginManager().getPlugin("AuraMobs");
         getServer().getPluginManager().registerEvents(
-                new destroyBlockMob(this),
+                new destroyBlockMob(this, auraMobsPlugin),
                 this
         );
 
