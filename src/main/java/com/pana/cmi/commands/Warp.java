@@ -1,4 +1,4 @@
-package com.pana.bugs.cmi.commands;
+package com.pana.cmi.commands;
 
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;

@@ -6,7 +6,7 @@ import com.pana.advancedenchantments.TemplateApplyListener;
 import com.pana.advancedenchantments.gui.MenuListener;
 import com.pana.advancedenchantments.recipes.RecipeRegistry;
 import com.pana.auramobs.DeathMob;
-import com.pana.bugs.cmi.enableCMIFix;
+import com.pana.cmi.enableCMIFix;
 import com.pana.citizens.enableNPCSHOP;
 import com.pana.crate.CrateListener;
 import com.pana.mechanics.mobblock.destroyBlockMob;

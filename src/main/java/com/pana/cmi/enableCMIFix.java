@@ -1,7 +1,7 @@
-package com.pana.bugs.cmi;
+package com.pana.cmi;
 
 import com.pana.TrrusFixes;
-import com.pana.bugs.cmi.commands.Warp;
+import com.pana.cmi.commands.Warp;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.Plugin;
 

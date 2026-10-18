@@ -2,6 +2,7 @@ package com.pana;
 
 import com.pana.advancedenchantments.GiveCommand;
 import com.pana.advancedenchantments.items.CustomItemRegistry;
+import com.pana.cmi.Kit;
 import com.pana.mechanics.pickspawner.commands.PickSpawner;
 import com.pana.mechanics.pickspawner.commands.SpawnerCommand;
 import net.kyori.adventure.text.minimessage.MiniMessage;
@@ -38,6 +39,10 @@ public class TrrusCommand implements CommandExecutor, TabCompleter {
             GiveCommand giveCommand = new GiveCommand(itemRegistry);
             return giveCommand.onCommand(sender, command, label, args);
         }
+        if (args.length >= 1 && args[0].equalsIgnoreCase("kit")) {
+            Kit kit = new Kit();
+            return kit.onCommand(sender, command, label, args);
+        }
         if (args.length >= 1 && args[0].equalsIgnoreCase("spawner")) {
             SpawnerCommand spawnerCommand = new SpawnerCommand(plugin);
             return spawnerCommand.onCommand(sender, command, label, args);
@@ -71,6 +76,10 @@ public class TrrusCommand implements CommandExecutor, TabCompleter {
         if (args[0].equalsIgnoreCase("spawner")) {
             SpawnerCommand spawnerCommand = new SpawnerCommand(plugin);
             return spawnerCommand.onTabComplete(sender, command, label, args);
+        }
+        if (args[0].equalsIgnoreCase("kit")) {
+            Kit kit = new Kit();
+            return kit.onTabComplete(sender, command, label, args);
         }
 
         return List.of();
