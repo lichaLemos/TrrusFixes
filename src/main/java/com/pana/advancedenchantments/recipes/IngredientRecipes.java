@@ -1,9 +1,11 @@
 package com.pana.advancedenchantments.recipes;
 
 import com.pana.advancedenchantments.items.CustomItemRegistry;
+import com.pana.mechanics.pickspawner.ItemCreation;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
+import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.ShapedRecipe;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -42,6 +44,111 @@ public class IngredientRecipes {
         registerDiamondAquaCompact();
         registerDiamondDeathCompact();
         registerDiamondHornCompact();
+
+        registerChangeSpawnerRecipe();
+
+        registerStonePickSpawnerRecipe();
+        registerCopperPickSpawnerRecipe();
+        registerIronPickSpawnerRecipe();
+        registerGoldPickSpawnerRecipe();
+        registerDiamondPickSpawnerRecipe();
+        registerNetheritePickSpawnerRecipe();
+    }
+
+    private void registerStonePickSpawnerRecipe() {
+        NamespacedKey key = new NamespacedKey(plugin, "craft_stone_pickspawner");
+
+        ShapedRecipe recipe = new ShapedRecipe(key, itemRegistry.createStonePickSpawner());
+        recipe.shape(" M ", "MPM", " M ");
+
+        recipe.setIngredient('M', itemRegistry.createFieryIron());
+        recipe.setIngredient('P', Material.WOODEN_PICKAXE);
+
+        Bukkit.addRecipe(recipe);
+    }
+
+    private void registerCopperPickSpawnerRecipe() {
+        NamespacedKey key = new NamespacedKey(plugin, "craft_copper_pickspawner");
+
+        ShapedRecipe recipe = new ShapedRecipe(key, itemRegistry.createCopperPickSpawner());
+        recipe.shape(" M ", "MPM", " M ");
+
+        recipe.setIngredient('M', itemRegistry.createGoldAiryCompact());
+        recipe.setIngredient('P', itemRegistry.createStonePickSpawner());
+
+        Bukkit.addRecipe(recipe);
+    }
+
+    private void registerIronPickSpawnerRecipe() {
+        NamespacedKey key = new NamespacedKey(plugin, "craft_iron_pickspawner");
+
+        ShapedRecipe recipe = new ShapedRecipe(key, itemRegistry.createIronPickSpawner());
+        recipe.shape(" M ", "MPM", " M ");
+
+        recipe.setIngredient('M', itemRegistry.createGeodeCarrotCompact());
+        recipe.setIngredient('P', itemRegistry.createCopperPickSpawner());
+
+        Bukkit.addRecipe(recipe);
+    }
+
+    private void registerGoldPickSpawnerRecipe() {
+        NamespacedKey key = new NamespacedKey(plugin, "craft_gold_pickspawner");
+
+        ShapedRecipe recipe = new ShapedRecipe(key, itemRegistry.createGoldPickSpawner());
+        recipe.shape(" M ", "MPM", " M ");
+
+        recipe.setIngredient('M', itemRegistry.createRedluziAquaCompact());
+        recipe.setIngredient('P', itemRegistry.createIronPickSpawner());
+
+        Bukkit.addRecipe(recipe);
+    }
+
+    private void registerDiamondPickSpawnerRecipe() {
+        NamespacedKey key = new NamespacedKey(plugin, "craft_diamond_pickspawner");
+
+        ShapedRecipe recipe = new ShapedRecipe(key, itemRegistry.createDiamondPickSpawner());
+        recipe.shape(" M ", "MPM", " M ");
+
+        recipe.setIngredient('M', itemRegistry.createEmeraldDeathCompact());
+        recipe.setIngredient('P', itemRegistry.createGoldPickSpawner());
+
+        Bukkit.addRecipe(recipe);
+    }
+
+    private void registerNetheritePickSpawnerRecipe() {
+        NamespacedKey key = new NamespacedKey(plugin, "craft_netherite_pickspawner");
+
+        ItemCreation itemCreation = new ItemCreation(plugin);
+        ItemStack defaultResult = itemCreation.buildPickaxe(1, 20);
+        ShapedRecipe recipe = new ShapedRecipe(key, defaultResult);
+        recipe.shape(" M ", "MPM", " M ");
+
+        recipe.setIngredient('M', itemRegistry.createDiamondHornCompact());
+        recipe.setIngredient('P', itemRegistry.createDiamondPickSpawner());
+
+        Bukkit.addRecipe(recipe);
+    }
+
+    private void registerChangeSpawnerRecipe() {
+        NamespacedKey key = new NamespacedKey(plugin, "craft_energized_spawner");
+
+        // Registramos la receta con un Spawner Cargado genérico (de Cerdo) como resultado base por defecto
+        ItemCreation itemCreation = new ItemCreation(plugin);
+        ItemStack defaultResult = itemCreation.changeSpawner(org.bukkit.entity.EntityType.PIG);
+
+        ShapedRecipe recipe = new ShapedRecipe(key, defaultResult);
+        recipe.shape("FNA", "CSQ", "DNH");
+
+        recipe.setIngredient('F', itemRegistry.createFieryIron());
+        recipe.setIngredient('N', Material.NETHER_STAR);
+        recipe.setIngredient('A', itemRegistry.createGoldAiryCompact());
+        recipe.setIngredient('C', itemRegistry.createGeodeCarrotCompact());
+        recipe.setIngredient('S', Material.SPAWNER);
+        recipe.setIngredient('Q', itemRegistry.createRedluziAquaCompact());
+        recipe.setIngredient('D', itemRegistry.createEmeraldDeathCompact());
+        recipe.setIngredient('H', itemRegistry.createDiamondHornCompact());
+
+        Bukkit.addRecipe(recipe);
     }
 
     //COMMON

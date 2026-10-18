@@ -43,6 +43,13 @@ public class ItemProtectionListener implements Listener {
     // 2. Evitar crafteos en mesas de crafteo vainilla (crear bloques o herramientas con tus ítems)
     @EventHandler
     public void onPrepareCraft(PrepareItemCraftEvent event) {
+        org.bukkit.inventory.Recipe recipe = event.getInventory().getRecipe();
+        if (recipe instanceof org.bukkit.Keyed keyed) {
+            if (keyed.getKey().getKey().equals("craft_energized_spawner")) {
+                return; // Es nuestro crafteo personalizado de spawner, lo permitimos
+            }
+        }
+
         for (ItemStack itemRecipe : event.getInventory().getMatrix()) {
             if (isCustomItem(itemRecipe)) {
                 ItemStack itemResult = event.getInventory().getResult();

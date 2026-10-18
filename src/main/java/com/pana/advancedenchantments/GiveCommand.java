@@ -5,9 +5,7 @@ import com.pana.advancedenchantments.items.CustomItemType;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
 import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
-import org.bukkit.command.TabCompleter;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.util.StringUtil;
@@ -18,43 +16,23 @@ import org.jspecify.annotations.NonNull;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GiveCommand implements CommandExecutor, TabCompleter {
+public class GiveCommand {
 
     private final CustomItemRegistry itemRegistry;
 
     private static final List<String> ITEM_OPTIONS = List.of(
-            "essence_blaze",
-            "essence_breeze",
-            "essence_piglin",
-            "essence_guardian",
-            "essence_wither",
-            "essence_warden",
-            // Común
-            "fiery_iron",
-            // Raro
-            "gold_fiery", "gold_airy",
-            // Épico
-            "geode_fiery", "geode_airy", "geode_carrot",
-            // Mítico
+            "essence_blaze", "essence_breeze", "essence_piglin", "essence_guardian", "essence_wither", "essence_warden",
+            "fiery_iron", "gold_fiery", "gold_airy", "geode_fiery", "geode_airy", "geode_carrot",
             "redluzi", "redluzi_fiery", "redluzi_airy", "redluzi_carrot", "redluzi_aqua",
-            // Legendario
             "emerald_airy", "emerald_carrot", "emerald_aqua", "emerald_death",
-            // Absoluto
             "diamond_carrot", "diamond_aqua", "diamond_death", "diamond_horn",
-            // Plantillas
-            "common",
-            "rare",
-            "epic",
-            "mythic",
-            "legendary",
-            "absolute"
+            "common", "rare", "epic", "mythic", "legendary", "absolute"
     );
 
     public GiveCommand(CustomItemRegistry itemRegistry) {
         this.itemRegistry = itemRegistry;
     }
 
-    @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String @NonNull [] args) {
         if (!(sender instanceof Player player)) {
             sender.sendMessage("Este comando solo puede ser ejecutado por un jugador.");
@@ -66,13 +44,17 @@ public class GiveCommand implements CommandExecutor, TabCompleter {
             return true;
         }
 
-        if (args.length < 2 || !args[0].equalsIgnoreCase("give")) {
+        if (args.length < 1) {
             player.sendMessage(MiniMessage.miniMessage().deserialize("<red>Uso correcto: /trrus give <nombre_item> [cantidad]"));
             return true;
         }
 
-        String targetItemName = args[1].toLowerCase();
+        String targetItemName = "";
         int amount = 1;
+
+        if (args.length >= 2) {
+            targetItemName = args[1].toLowerCase();
+        }
 
         if (args.length >= 3) {
             try {
@@ -136,7 +118,6 @@ public class GiveCommand implements CommandExecutor, TabCompleter {
         return true;
     }
 
-    @Override
     public @Nullable List<String> onTabComplete(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String @NotNull [] args) {
         if (!sender.isOp()) {
             return List.of();
@@ -144,18 +125,14 @@ public class GiveCommand implements CommandExecutor, TabCompleter {
 
         List<String> completions = new ArrayList<>();
 
-        if (args.length == 1) {
-            StringUtil.copyPartialMatches(args[0], List.of("give"), completions);
-            return completions;
-        }
-
-        if (args.length == 2 && args[0].equalsIgnoreCase("give")) {
+        if (args.length == 2) {
             StringUtil.copyPartialMatches(args[1], ITEM_OPTIONS, completions);
             return completions;
         }
 
-        if (args.length == 3 && args[0].equalsIgnoreCase("give")) {
-            return List.of("1", "16", "32", "64");
+        if (args.length == 3) {
+            StringUtil.copyPartialMatches(args[2], List.of("1", "16", "32", "64"), completions);
+            return completions;
         }
 
         return List.of();

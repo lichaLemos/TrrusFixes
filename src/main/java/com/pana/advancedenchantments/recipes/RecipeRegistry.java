@@ -57,6 +57,15 @@ public class RecipeRegistry {
         Bukkit.removeRecipe(new NamespacedKey(plugin, "craft_diamond_death_compact"));
         Bukkit.removeRecipe(new NamespacedKey(plugin, "craft_diamond_horn_compact"));
         Bukkit.removeRecipe(new NamespacedKey(plugin, "craft_template_absolute"));
+
+        Bukkit.removeRecipe(new NamespacedKey(plugin, "craft_energized_spawner"));
+
+        Bukkit.removeRecipe(new NamespacedKey(plugin, "craft_stone_pickspawner"));
+        Bukkit.removeRecipe(new NamespacedKey(plugin, "craft_copper_pickspawner"));
+        Bukkit.removeRecipe(new NamespacedKey(plugin, "craft_iron_pickspawner"));
+        Bukkit.removeRecipe(new NamespacedKey(plugin, "craft_gold_pickspawner"));
+        Bukkit.removeRecipe(new NamespacedKey(plugin, "craft_diamond_pickspawner"));
+        Bukkit.removeRecipe(new NamespacedKey(plugin, "craft_netherite_pickspawner"));
     }
 
     public CustomItemRegistry getItemRegistry() {

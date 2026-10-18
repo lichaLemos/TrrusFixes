@@ -1,4 +1,4 @@
-package com.pana.mechanics;
+package com.pana.mechanics.mobblock;
 
 import dev.aurelium.auraskills.api.event.skill.EntityXpGainEvent;
 import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer;

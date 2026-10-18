@@ -1,4 +1,4 @@
-package com.pana.mechanics;
+package com.pana.mechanics.mobblock;
 
 import org.bukkit.Material;
 import org.bukkit.entity.EntityType;

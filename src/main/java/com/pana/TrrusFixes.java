@@ -1,7 +1,6 @@
 package com.pana;
 
 import com.pana.advancedenchantments.ECommandExecutor;
-import com.pana.advancedenchantments.GiveCommand;
 import com.pana.advancedenchantments.ItemProtectionListener;
 import com.pana.advancedenchantments.TemplateApplyListener;
 import com.pana.advancedenchantments.gui.MenuListener;
@@ -10,7 +9,11 @@ import com.pana.auramobs.DeathMob;
 import com.pana.bugs.cmi.enableCMIFix;
 import com.pana.citizens.enableNPCSHOP;
 import com.pana.crate.CrateListener;
-import com.pana.mechanics.destroyBlockMob;
+import com.pana.mechanics.mobblock.destroyBlockMob;
+import com.pana.mechanics.pickspawner.ItemProtection;
+import com.pana.mechanics.pickspawner.Listeners;
+import com.pana.mechanics.pickspawner.OfflinePDCQueue;
+import com.pana.mechanics.strongermobs.StrongerMobsListener;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -66,13 +69,33 @@ public class TrrusFixes extends JavaPlugin {
                 this
         );
 
+        getServer().getPluginManager().registerEvents(
+                new ItemProtection(this),
+                this
+        );
+
+        getServer().getPluginManager().registerEvents(
+                new Listeners(this) {
+                },
+                this
+        );
+
+        getServer().getPluginManager().registerEvents(
+                new StrongerMobsListener(),
+                this
+        );
+
+        OfflinePDCQueue offlinePDCQueue = new OfflinePDCQueue(this);
+        getServer().getPluginManager().registerEvents(offlinePDCQueue, this);
+
         // 3. Registro del Comando
-        GiveCommand giveCommand = new GiveCommand(recipeRegistry.getItemRegistry());
+        TrrusCommand trrusCommand = new TrrusCommand(this,
+                recipeRegistry.getItemRegistry());
 
         var command = getCommand("trrus");
         if (command != null) {
-            command.setExecutor(giveCommand);
-            command.setTabCompleter(giveCommand);
+            command.setExecutor(trrusCommand);
+            command.setTabCompleter(trrusCommand);
         } else {
             getLogger().severe("No se pudo registrar el comando '/trrus'. ¿Está declarado en el plugin.yml?");
         }

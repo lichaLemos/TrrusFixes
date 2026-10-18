@@ -24,6 +24,38 @@ public class CustomItemRegistry {
         return itemKey;
     }
 
+    // --- MÉTODOS PARA PICKSPAWNERS ---
+
+    public ItemStack createStonePickSpawner() {
+        return buildItem(CustomItemType.STONE_PICKSPAWNER, List.of(
+                "<!italic><gray>1era Capa mágica para el PickSpawner.</gray>"
+        ));
+    }
+
+    public ItemStack createCopperPickSpawner() {
+        return buildItem(CustomItemType.COPPER_PICKSPAWNER, List.of(
+                "<!italic><gray>2da Capa mágica para el PickSpawner.</gray>"
+        ));
+    }
+
+    public ItemStack createIronPickSpawner() {
+        return buildItem(CustomItemType.IRON_PICKSPAWNER, List.of(
+                "<!italic><gray>3era Capa mágica para el PickSpawner.</gray>"
+        ));
+    }
+
+    public ItemStack createGoldPickSpawner() {
+        return buildItem(CustomItemType.GOLD_PICKSPAWNER, List.of(
+                "<!italic><gray>4ta Capa mágica para el PickSpawner.</gray>"
+        ));
+    }
+
+    public ItemStack createDiamondPickSpawner() {
+        return buildItem(CustomItemType.DIAMOND_PICKSPAWNER, List.of(
+                "<!italic><gray>5ta Capa mágica para el PickSpawner.</gray>"
+        ));
+    }
+
     // --- MÉTODOS PARA DIVERSOS ÍTEMS ---
 
     public ItemStack createBlazeEssence() {

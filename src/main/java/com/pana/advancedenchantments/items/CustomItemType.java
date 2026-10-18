@@ -3,6 +3,12 @@ package com.pana.advancedenchantments.items;
 import org.bukkit.Material;
 
 public enum CustomItemType {
+    // --- PICOS PICKSPAWNERS ---
+    STONE_PICKSPAWNER("stone_pickspawner", Material.STONE_PICKAXE, "PickSpawner de Piedra", "#7E7E7E"),
+    COPPER_PICKSPAWNER("copper_pickspawner", Material.COPPER_PICKAXE, "PickSpawner de Cobre", "#D36C47"),
+    IRON_PICKSPAWNER("iron_pickspawner", Material.IRON_PICKAXE, "PickSpawner de Hierro", "#5B5B5B"),
+    GOLD_PICKSPAWNER("gold_pickspawner", Material.GOLDEN_PICKAXE, "PickSpawner de Oro", "#E6AF15"),
+    DIAMOND_PICKSPAWNER("diamond_pickspawner", Material.DIAMOND_PICKAXE, "PickSpawner de Diamante", "#2AC5AA"),
     // --- MATERIALES PRIMA ---
     BLAZE_ESSENCE("blaze_essence", Material.BLAZE_POWDER, "Esencia de Blaze", "#FFAA00"),
     BREEZE_ESSENCE("breeze_essence", Material.WIND_CHARGE, "Esencia de Breeze", "#6B75A9"),

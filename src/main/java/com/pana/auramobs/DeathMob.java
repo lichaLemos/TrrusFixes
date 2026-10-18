@@ -2,14 +2,13 @@ package com.pana.auramobs;
 
 import com.pana.advancedenchantments.items.CustomItemRegistry;
 import dev.aurelium.auramobs.api.AuraMobsAPI;
-import net.advancedplugins.ae.api.AEAPI;
-import net.advancedplugins.ae.enchanthandler.enchantments.AdvancedEnchantment;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.inventory.ItemStack;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class DeathMob implements Listener {
@@ -28,6 +27,7 @@ public class DeathMob implements Listener {
             int level = AuraMobsAPI.getMobLevel(entity);
 
             int baseXP = event.getDroppedExp();
+            /*
             AdvancedEnchantment enchantment = AEAPI.getEnchantmentInstance("experience");
             int enchantMultiplier = 1;
             if(entity.getKiller() != null){
@@ -36,14 +36,16 @@ public class DeathMob implements Listener {
                     enchantMultiplier = 1+ ((AEAPI.getEnchantLevel(enchantment.getName(), mainHand))/10);
                 }
             }
+            */
 
-            event.setDroppedExp(baseXP + (enchantMultiplier*baseXP*((level-1)/10)));
+            event.setDroppedExp(baseXP + (/* enchantMultiplier* */baseXP*((level-1)/10)));
 
-            List<ItemStack> drops = event.getDrops();
+            // Creamos una copia de la lista antes de limpiarla
+            List<ItemStack> drops = new ArrayList<>(event.getDrops());
             event.getDrops().clear();
 
             for (ItemStack drop : drops) {
-                drop.setAmount(drop.getAmount() * (level/25));
+                drop.setAmount(drop.getAmount() + (drop.getAmount() * (level/25)));
                 event.getDrops().add(drop);
             }
 
