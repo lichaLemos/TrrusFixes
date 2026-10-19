@@ -14,8 +14,8 @@ import com.pana.mechanics.pickspawner.ItemProtection;
 import com.pana.mechanics.pickspawner.Listeners;
 import com.pana.mechanics.pickspawner.OfflinePDCQueue;
 import com.pana.mechanics.strongermobs.StrongerMobsListener;
+import dev.aurelium.auramobs.AuraMobs;
 import org.bukkit.Bukkit;
-import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class TrrusFixes extends JavaPlugin {
@@ -63,7 +63,7 @@ public class TrrusFixes extends JavaPlugin {
         );
 
         // REGISTRO DEL DESTROY BLOCK MOB
-        Plugin auraMobsPlugin = Bukkit.getPluginManager().getPlugin("AuraMobs");
+        AuraMobs auraMobsPlugin = (AuraMobs) Bukkit.getPluginManager().getPlugin("AuraMobs");
         getServer().getPluginManager().registerEvents(
                 new destroyBlockMob(this, auraMobsPlugin),
                 this
@@ -81,7 +81,7 @@ public class TrrusFixes extends JavaPlugin {
         );
 
         getServer().getPluginManager().registerEvents(
-                new StrongerMobsListener(),
+                new StrongerMobsListener(auraMobsPlugin),
                 this
         );
 

@@ -1,5 +1,6 @@
 package com.pana.mechanics.mobblock;
 
+import dev.aurelium.auramobs.AuraMobs;
 import dev.aurelium.auraskills.api.event.skill.EntityXpGainEvent;
 import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer;
 import org.bukkit.Location;
@@ -16,7 +17,6 @@ import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
-import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.Objects;
@@ -27,11 +27,10 @@ import static org.bukkit.Statistic.MINE_BLOCK;
 
 public class destroyBlockMob implements Listener {
 
-
     private final JavaPlugin plugin;
-    private final Plugin AuraMobsPlugin;
+    private final AuraMobs AuraMobsPlugin;
 
-    public destroyBlockMob(JavaPlugin plugin, Plugin auraPlugin) {
+    public destroyBlockMob(JavaPlugin plugin, AuraMobs auraPlugin) {
         this.plugin = plugin;
         this.AuraMobsPlugin = auraPlugin;
     }
@@ -58,9 +57,7 @@ public class destroyBlockMob implements Listener {
                     entity.getPersistentDataContainer().set(key, PersistentDataType.STRING, "mob");
 
                     // 2. Engañamos a AuraMobs poniéndole su propia Summon Key para que lo ignore
-                    if (AuraMobsPlugin instanceof dev.aurelium.auramobs.AuraMobs auraMobs) {
-                        entity.getPersistentDataContainer().set(auraMobs.getSummonKey(), PersistentDataType.BYTE, (byte) 1);
-                    }
+                    entity.getPersistentDataContainer().set(AuraMobsPlugin.getSummonKey(), PersistentDataType.BYTE, (byte) 1);
 
 
                     Player player = event.getPlayer();
